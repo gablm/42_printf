@@ -3,7 +3,7 @@ NAME=libftprintf.a
 COMPILER=cc
 FLAGS=-Wall -Wextra -Werror
 
-FILES=main.c put_basic.c
+FILES=main.c put_letter.c put_nbr.c
 BNS_FILES= 
 
 OBJS=$(FILES:.c=.o)
@@ -27,5 +27,3 @@ re: fclean all
 
 bonus: $(OBJS) $(BNS_OBJS)
 	ar rc $(NAME) $(OBJS) $(BNS_OBJS)
-
-.PHONY: clean re fclean all bonus

@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_basic.c                                        :+:      :+:    :+:   */
+/*   put_nbr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 00:15:31 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/10/03 00:16:12 by gfragoso         ###   ########.fr       */
+/*   Created: 2023/10/04 15:42:29 by gfragoso          #+#    #+#             */
+/*   Updated: 2023/10/04 15:58:17 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		write(1, str + i++, 1);
-	return (i);
-}
 
 int	ft_putint(int n)
 {
@@ -52,5 +36,30 @@ int	ft_putint(int n)
 		return (res);
 	}
 	ft_putchar('0' + n);
+	return (1);
+}
+
+int	ft_putuint(unsigned int n, char c)
+{
+	int				res;
+	unsigned int	nbase;
+	char			*base;
+
+	nbase = 10;
+	if (c == 'X' || c == 'x')
+		nbase = 16;
+	res = 0;
+	if (n > nbase - 1)
+	{
+		res += ft_putuint(n / nbase, c);
+		res += ft_putuint(n % nbase, c);
+		return (res);
+	}
+	base = "0123456789";
+	if (c == 'X')
+		base = "0123456789ABCDEF";
+	if (c == 'x')
+		base = "0123456789abcdef";
+	ft_putchar(base[n]);
 	return (1);
 }

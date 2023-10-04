@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   put_basic.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 00:15:23 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/10/04 15:51:46 by gfragoso         ###   ########.fr       */
+/*   Created: 2023/10/03 00:15:31 by gfragoso          #+#    #+#             */
+/*   Updated: 2023/10/04 15:44:36 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-int	ft_printf(const char *, ...);
+int	ft_putstr(char *str)
+{
+	int	i;
 
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putint(int n);
-int	ft_putuint(unsigned int n, char c);
-
-#endif
+	i = 0;
+	while (str[i])
+		write(1, str + i++, 1);
+	return (i);
+}
