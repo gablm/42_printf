@@ -17,9 +17,6 @@ p -> void * aka unsigned long long
 */
 int	process_tag(const char *format, va_list args, int *count)
 {
-	int	i;
-
-	i = 0;
 	if (*format == '%')
 		*count += ft_putchar('%');
 	if (*format == 'c')
@@ -32,8 +29,7 @@ int	process_tag(const char *format, va_list args, int *count)
 		*count += ft_putuint(va_arg(args, unsigned int), *format);
 	if (*format == 'p')
 		*count += ft_puthex(va_arg(args, void *));
-	i += 2;
-	return (i);
+	return (2);
 }
 
 int	loop_args(const char *format, va_list args)

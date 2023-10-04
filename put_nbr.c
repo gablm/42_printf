@@ -69,16 +69,26 @@ int	ft_puthex(void *p)
 	int				i;
 	int				num;
 	unsigned long	pointer;
+	int				written;
 
+	written = 0;
 	pointer = (unsigned long)p;
-	i = (sizeof(pointer) << 3) - 4;
+	if (pointer == 0)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	write(1, "0x", 2);
+	i = (sizeof(pointer) << 3) - 4;
 	while (i >= 0)
 	{
 		num = (pointer >> i) & 0xf;
-		if (num != 0)
+		if (num != 0 || written > 0)
+		{
 			ft_putchar("0123456789abcdef"[num]);
+			written++;
+		}
 		i -= 4;
 	}
-	return (12 + 2);
+	return (written + 2);
 }
