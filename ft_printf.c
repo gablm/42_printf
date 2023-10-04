@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 00:16:19 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/10/04 15:57:09 by gfragoso         ###   ########.fr       */
+/*   Created: 2023/10/04 18:37:03 by gfragoso          #+#    #+#             */
+/*   Updated: 2023/10/04 18:37:03 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 /* printf expectations
 
 p -> void * aka unsigned long long
 d / i -> int
 u / x / X -> unsigned int // int converted to unsigned
-
-*/ 
-
+*/
 int	process_tag(const char *format, va_list args, int *count)
 {
 	int	i;
@@ -74,7 +72,7 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int main(void) 
 {
 	int s = ft_printf("a%x\n\n%s%%", 12345, "bola");
@@ -83,3 +81,4 @@ int main(void)
 	printf("\n======\nn2=%i\n======\n", h);
 	return (0);
 }
+*/

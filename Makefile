@@ -3,7 +3,7 @@ NAME=libftprintf.a
 COMPILER=cc
 FLAGS=-Wall -Wextra -Werror
 
-FILES=main.c put_letter.c put_nbr.c
+FILES=ft_printf.c put_letter.c put_nbr.c
 BNS_FILES= 
 
 OBJS=$(FILES:.c=.o)
