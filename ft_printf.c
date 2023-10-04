@@ -13,10 +13,7 @@
 #include "ft_printf.h"
 
 /* printf expectations
-
 p -> void * aka unsigned long long
-d / i -> int
-u / x / X -> unsigned int // int converted to unsigned
 */
 int	process_tag(const char *format, va_list args, int *count)
 {
@@ -33,6 +30,8 @@ int	process_tag(const char *format, va_list args, int *count)
 		*count += ft_putint(va_arg(args, int));
 	if (*format == 'u' || *format == 'x' || *format == 'X')
 		*count += ft_putuint(va_arg(args, unsigned int), *format);
+	if (*format == 'p')
+		*count += ft_puthex(va_arg(args, void *));
 	i += 2;
 	return (i);
 }
@@ -71,14 +70,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-/*#include <stdio.h>
-int main(void) 
-{
-	int s = ft_printf("a%x\n\n%s%%", 12345, "bola");
-	printf("\n======\nn1=%i\n======\n", s);
-	int h = printf("a%x\n\n%s%%", 12345, "bola");
-	printf("\n======\nn2=%i\n======\n", h);
-	return (0);
-}
-*/

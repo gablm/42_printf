@@ -63,3 +63,22 @@ int	ft_putuint(unsigned int n, char c)
 	ft_putchar(base[n]);
 	return (1);
 }
+
+int	ft_puthex(void *p)
+{
+	int				i;
+	int				num;
+	unsigned long	pointer;
+
+	pointer = (unsigned long)p;
+	i = (sizeof(pointer) << 3) - 4;
+	write(1, "0x", 2);
+	while (i >= 0)
+	{
+		num = (pointer >> i) & 0xf;
+		if (num != 0)
+			ft_putchar("0123456789abcdef"[num]);
+		i -= 4;
+	}
+	return (12 + 2);
+}

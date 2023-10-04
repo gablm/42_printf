@@ -23,5 +23,6 @@ int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putint(int n);
 int	ft_putuint(unsigned int n, char c);
+int ft_puthex(void *p);
 
 #endif
