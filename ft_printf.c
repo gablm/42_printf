@@ -12,9 +12,6 @@
 
 #include "ft_printf.h"
 
-/* printf expectations
-p -> void * aka unsigned long long
-*/
 int	process_tag(const char *format, va_list args, int *count)
 {
 	if (*format == '%')
