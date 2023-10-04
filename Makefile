@@ -21,7 +21,7 @@ clean:
 	rm -fr $(OBJS) $(BNS_OBJS)
 
 fclean:
-	rm -fr $(OBJS) $(BNS_OBJS) libft.a
+	rm -fr $(OBJS) $(BNS_OBJS) $(NAME)
 
 re: fclean all
 
