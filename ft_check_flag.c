@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_letter.c                                       :+:      :+:    :+:   */
+/*   ft_check_flag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 20:45:43 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/10/04 20:45:43 by gfragoso         ###   ########.fr       */
+/*   Created: 2023/10/05 18:15:33 by gfragoso          #+#    #+#             */
+/*   Updated: 2023/10/05 18:49:48 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_putchar(char c)
+int	ft_is_param(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	return (c == 'c' || c == 's' || c == 'p' || c == 'd'
+		|| c == 'i' || c == 'u' || c == 'x' || c == 'X'
+		|| c == '%');
 }
 
-int	ft_putstr(char *str)
+int	ft_is_flag(int c)
 {
-	int	i;
-
-	if (!str)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	i = 0;
-	while (str[i])
-		write(1, str + i++, 1);
-	return (i);
+	return (c == '#' || c == ' ' || c == '+');
 }

@@ -6,13 +6,13 @@
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:37:03 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/10/04 18:37:03 by gfragoso         ###   ########.fr       */
+/*   Updated: 2023/10/05 18:46:16 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	process_tag(const char *format, va_list args, int *count)
+static int	process_tag(const char *format, va_list args, int *count)
 {
 	if (*format == '%')
 		*count += ft_putchar('%');
@@ -26,7 +26,9 @@ int	process_tag(const char *format, va_list args, int *count)
 		*count += ft_putuint(va_arg(args, unsigned int), *format);
 	if (*format == 'p')
 		*count += ft_puthex(va_arg(args, void *));
-	return (2);
+	if (ft_is_flag(*format))
+		*count += ft_process_flags(format, args);
+	return (2 + ft_is_flag(*format));
 }
 
 int	loop_args(const char *format, va_list args)

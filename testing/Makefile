@@ -1,6 +1,6 @@
 NAME=test
 
-$(NAME):
+$(NAME): ../libftprintf.a
 	cc -Wall -Wextra -Werror test.c -o $(NAME) -L.. -lftprintf
 
 clean:
