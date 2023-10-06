@@ -28,6 +28,7 @@ int	ft_puthex(void *p);
 int	ft_is_flag(int c);
 int	ft_is_param(int c);
 
-int	ft_process_flags(const char *format, va_list args);
+int	ft_process_flags(char *format, va_list args);
+char	*find_p(char *format);
 
 #endif

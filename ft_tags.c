@@ -23,31 +23,56 @@ static int	ft_addzero(char c, unsigned int num)
 	return (ft_putuint(num, c));
 }
 
-static char	find_p(const char *format)
+static int	ft_addspace(char c, va_list args)
+{
+	int		len;
+	int		num;
+	char	*ans;
+
+	len = 0;
+	if (c == 's')
+	{
+		ans = va_arg(args, char *);
+		if (!ans || ans[0] == ' ')
+			len = write(1, " ", 1);
+		len += ft_putstr(ans);
+	}
+	if (c == 'i' || c == 'd')
+	{
+		num = va_arg(args, int);
+		if (num >= 0)
+			len = write(1, " ", 1);
+		len += ft_putint(num);
+	}
+	return (len);
+}
+
+char	*find_p(char *format)
 {
 	char	c;
 
 	c = *format;
 	while (*format == c)
 		format++;
-	return (*format);
+	return (format);
 }
 
 int	ft_process_flags(char *format, va_list args)
 {
 	int	c;
 
-	if (*format == '#' && (find_p(format) == 'x' || find_p(format) == 'X' ))
-		return (ft_addzero(find_p(format), va_arg(args, unsigned int)));
-	if (*format == ' ' && (find_p(format) == 'd' 
-		|| find_p(format) == 'i' || find_p(format) == 'u'))
-		return (0);
-	if (*format == '+' && (find_p(format) == 'd' 
-		|| find_p(format) == 'i'))
+	if (*format == '#' && (*find_p(format) == 'x' || *find_p(format) == 'X' ))
+		return (ft_addzero(*find_p(format), va_arg(args, unsigned int)));
+	if (*format == ' ' && (*find_p(format) == 'd'  
+		|| *find_p(format) == 'i' || *find_p(format) == 's'))
+		return (ft_addspace(*find_p(format), args));
+	if (*format == '+' && (*find_p(format) == 'd' 
+		|| *find_p(format) == 'i'))
 	{
 		c = va_arg(args, int);
-		ft_putchar("-+"[c >= 0]);
-		return (1 + ft_putint(c));
+		if (c >= 0)
+			ft_putchar('+');
+		return ((c >= 0) + ft_putint(c));
 	}
 	return (0);
 }

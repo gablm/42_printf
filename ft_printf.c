@@ -27,8 +27,11 @@ static int	process_tag(const char *format, va_list args, int *count)
 	if (*format == 'p')
 		*count += ft_puthex(va_arg(args, void *));
 	if (ft_is_flag(*format))
-		*count += ft_process_flags(format, args);
-	return (2 + ft_is_flag(*format));
+	{
+		*count += ft_process_flags((char *)format, args);
+		return (2 + (int)(find_p((char *)format) - format));
+	}
+	return (2);
 }
 
 int	loop_args(const char *format, va_list args)

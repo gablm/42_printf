@@ -5,9 +5,9 @@ int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	int s = ft_printf("%+d", -10);
+	int s = ft_printf("%+d", -5);
 	printf("\n======\nn1=%i\n======\n", s);
-	int h = printf("%+d", 0);
+	int h = printf("% s", "a");
 	printf("\n======\nn2=%i\n======\n", h);
 	return (0);
 }
