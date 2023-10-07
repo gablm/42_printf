@@ -17,18 +17,18 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putint(int n);
-int	ft_putuint(unsigned int n, char c);
-int	ft_puthex(void *p);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putint(int n);
+int		ft_putuint(unsigned int n, char c);
+int		ft_puthex(void *p);
 
-int	ft_is_flag(int c);
-int	ft_is_param(int c);
+int		ft_is_flag(int c);
+int		ft_is_param(int c);
 
-int	ft_process_flags(char *format, va_list args);
+int		ft_process_flags(char *format, va_list args);
 char	*find_p(char *format);
 
 #endif

@@ -50,6 +50,8 @@ int	loop_args(const char *format, va_list args)
 			count++;
 			continue ;
 		}
+		if (format[i] == '%' && !format[i + 1])
+			return (-1);
 		i += process_tag(format + i + 1, args, &count);
 	}
 	return (count);

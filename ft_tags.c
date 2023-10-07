@@ -63,11 +63,11 @@ int	ft_process_flags(char *format, va_list args)
 
 	if (*format == '#' && (*find_p(format) == 'x' || *find_p(format) == 'X' ))
 		return (ft_addzero(*find_p(format), va_arg(args, unsigned int)));
-	if (*format == ' ' && (*find_p(format) == 'd'  
-		|| *find_p(format) == 'i' || *find_p(format) == 's'))
+	if (*format == ' ' && (*find_p(format) == 'd'
+			|| *find_p(format) == 'i' || *find_p(format) == 's'))
 		return (ft_addspace(*find_p(format), args));
 	if (*format == '+' && (*find_p(format) == 'd' 
-		|| *find_p(format) == 'i'))
+			|| *find_p(format) == 'i'))
 	{
 		c = va_arg(args, int);
 		if (c >= 0)
@@ -76,4 +76,3 @@ int	ft_process_flags(char *format, va_list args)
 	}
 	return (0);
 }
-
