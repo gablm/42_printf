@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   put_letter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfragoso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 18:34:06 by gfragoso          #+#    #+#             */
-/*   Updated: 2023/10/05 18:24:20 by gfragoso         ###   ########.fr       */
+/*   Created: 2023/10/04 20:45:43 by gfragoso          #+#    #+#             */
+/*   Updated: 2023/10/05 18:11:55 by gfragoso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
-int		ft_printf(const char *format, ...);
+int	ft_putstr(char *str)
+{
+	int	i;
 
-int		ft_putchar(char c);
-int		ft_putstr(char *str);
-int		ft_putint(int n);
-int		ft_putuint(unsigned int n, char c);
-int		ft_puthex(void *p);
-
-#endif
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	i = 0;
+	while (str[i])
+		write(1, str + i++, 1);
+	return (i);
+}

@@ -25,4 +25,13 @@ int		ft_putint(int n);
 int		ft_putuint(unsigned int n, char c);
 int		ft_puthex(void *p);
 
+int		ft_is_flag(int c);
+int		ft_is_param(int c);
+
+int		ft_process_flags(char *format, va_list args);
+char	*find_p(char *format);
+int		ft_atoi(const char *nptr);
+int		ft_strlen(char *str);
+char	*ft_itoa(int n);
+
 #endif

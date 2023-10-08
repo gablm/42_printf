@@ -3,7 +3,8 @@ NAME=libftprintf.a
 COMPILER=cc
 FLAGS=-Wall -Wextra -Werror
 
-FILES=ft_printf.c ft_put_letter.c ft_put_nbr.c
+FILES=ft_printf.c ft_put_letter.c ft_put_nbr.c ft_utils.c ft_utils_itoa.c ft_tags.c
+BNS_FILES=
 HEADER = ft_printf.h
 
 OBJS=$(FILES:.c=.o)
@@ -25,5 +26,5 @@ fclean:
 
 re: fclean all
 
-bonus: $(OBJS)
-	ar rc $(NAME) $(OBJS)
+bonus: $(OBJS) $(BNS_OBJS)
+	ar rc $(NAME) $(OBJS) $(BNS_OBJS)

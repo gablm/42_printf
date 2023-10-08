@@ -12,6 +12,21 @@
 
 #include "ft_printf.h"
 
+static int	ft_putwspace(int len)
+{
+	int	i;
+
+	if (len <= 0)
+		return (0);
+	i = 0;
+	while (i < len)
+	{
+		ft_putchar(' ');
+		i++;
+	}
+	return (i);
+}
+
 static int	ft_addzero(char c, unsigned int num)
 {
 	if (num != 0)
@@ -23,26 +38,31 @@ static int	ft_addzero(char c, unsigned int num)
 	return (ft_putuint(num, c));
 }
 
-static int	ft_addspace(char c, va_list args)
+static int	ft_addspace(char *c, va_list args)
 {
 	int		len;
 	int		num;
 	char	*ans;
+	int		space;
 
 	len = 0;
-	if (c == 's')
+	space = ft_atoi(c);
+	while (*c >= '0' && *c <= '9')
+		c++;
+	if (*c == 's')
 	{
 		ans = va_arg(args, char *);
-		if (!ans || ans[0] == ' ')
-			len = write(1, " ", 1);
+		len = ft_strlen(ans);
+		len = ft_putwspace(space - len);
 		len += ft_putstr(ans);
 	}
-	if (c == 'i' || c == 'd')
+	if (*c == 'i' || *c == 'd')
 	{
 		num = va_arg(args, int);
-		if (num >= 0)
-			len = write(1, " ", 1);
+		ans = ft_itoa(num);
+		len = ft_putwspace(num >= 0);
 		len += ft_putint(num);
+		free(ans);
 	}
 	return (len);
 }
@@ -65,7 +85,7 @@ int	ft_process_flags(char *format, va_list args)
 		return (ft_addzero(*find_p(format), va_arg(args, unsigned int)));
 	if (*format == ' ' && (*find_p(format) == 'd'
 			|| *find_p(format) == 'i' || *find_p(format) == 's'))
-		return (ft_addspace(*find_p(format), args));
+		return (ft_addspace(find_p(format), args));
 	if (*format == '+' && (*find_p(format) == 'd' 
 			|| *find_p(format) == 'i'))
 	{
