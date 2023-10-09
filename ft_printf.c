@@ -34,6 +34,8 @@ int	loop_args(const char *format, va_list args)
 	int	i;
 	int	count;
 
+	if (!format)
+		return (-1);
 	count = 0;
 	i = 0;
 	while (format[i])
